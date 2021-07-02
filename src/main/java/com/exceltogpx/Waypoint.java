@@ -4,17 +4,14 @@ public class Waypoint {
 
 	private float lon;
 	private float lat;
-	private float ele;
 	
 	/**
 	 * @param lat latitude
 	 * @param lon longitude
-	 * @param ele elevation
 	 */
-	public Waypoint(float lat, float lon, float ele) {
+	public Waypoint(float lat, float lon) {
 		this.lat = lat;
 		this.lon = lon;
-		this.ele = ele;
 	}
 
 	protected float getLat() {
@@ -25,13 +22,9 @@ public class Waypoint {
 		return lon;
 	}
 
-	protected float getEle() {
-		return ele;
-	}
-
 	@Override
 	public String toString() {
-		return "Waypoint [lat=" + lat + ", lon=" + lon + ", ele=" + ele + "]";
+		return "Waypoint [lat=" + lat + ", lon=" + lon + "]";
 	}
 
 }

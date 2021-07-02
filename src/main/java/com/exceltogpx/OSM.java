@@ -14,6 +14,9 @@ import org.json.JSONObject;
 
 public class OSM {
 
+	public final static String aq = "https://nominatim.openstreetmap.org/search?q=";
+	public final static String bq = "&format=json&addressdetails=1";
+	
 	private static String readAll(Reader rd) throws IOException {
 		StringBuilder sb = new StringBuilder();
 		int cp;
@@ -40,16 +43,33 @@ public class OSM {
 
 	public static JSONObject query(String q) {
 		try{
-			return readJsonFromUrl("https://nominatim.openstreetmap.org/search?q=" + q.replace(' ', '+') + "&format=json&addressdetails=1");
+			return readJsonFromUrl(aq + edit(q) + bq);
 		}catch(Exception e){
 			return null;
+		}finally {
+//			System.out.println("done");
 		}
+	}
+	
+	public static String edit(String q) {
+		String s = q.toLowerCase();
+		s = s.replace("circonv.", "circonvallazione ");
+		s = s.replace("\' ", "\'");
+		s = s.replace(' ', '+');
+		return s;
+	}
+	
+	public static void printquery(String s) {
+		System.out.println(aq + edit(s) + bq);
 	}
 	
 	public static void main(String[] args) throws IOException, JSONException {
 //		JSONObject json = readJsonFromUrl("https://nominatim.openstreetmap.org/search?q=The+White+House,+Washington+DC&format=json&addressdetails=1");
-		JSONObject json = query("Via Pasubio 19 Varese");
-		System.out.println(json.toString());
+//		JSONObject json = query("Via Pasubio 19 Varese");
+//		System.out.println(json.toString());
+//		String s = "3.0";
+//		Float.parseFloat(s);
+		
 //		System.out.println(json.get("id"));
 	}
 }

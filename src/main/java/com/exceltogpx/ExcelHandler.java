@@ -1,5 +1,6 @@
 package com.exceltogpx;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,72 +16,99 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelHandler {
-	public static List<Address> l = new ArrayList<>();	
+	public List<Address> l = new ArrayList<>();	
 	public static Address last = null;
+	public static File f;
+	public final static String datpath = System.getProperty("user.dir") + File.separatorChar;
+	public final String fileName;
 	public final static int nof = 3;
-	public final static int off = 3;
+	public final static int off = 20;
+	public final static int indcitta = 0;
+	public final static int indvia = 1;
+	public final static int indcivico = 2;
 	
-	public ExcelHandler() {
-		// TODO Auto-generated constructor stu
+	public ExcelHandler(String s) {
+		fileName = s;
+		f = new File(s);
 	}
 
-	public static void read() throws EncryptedDocumentException, IOException {
-		FileInputStream ip = new FileInputStream("C:\\Java programs\\excelConvMaven\\prova.xlsx");
+	/**
+	 * reads the files from excel and puts them into the static list l
+	 * @param s excel name
+	 * @throws EncryptedDocumentException
+	 * @throws IOException
+	 */
+	public void read() throws EncryptedDocumentException, IOException {
+		FileInputStream ip = new FileInputStream(datpath + fileName);
 		Workbook wb = WorkbookFactory.create(ip);
 		Sheet sheet = wb.getSheetAt(0);
 		Iterator<Row> rowIterator = sheet.rowIterator();
 		DataFormatter d = new DataFormatter();
+		int i = 0;
 		while (rowIterator.hasNext()) {
 			Row row = rowIterator.next();
 
 			//iterate over the columns of the current row
 			Iterator<Cell> cellIterator = row.cellIterator();
-			int i = 0;
 			Address addr = new Address();
 			while (cellIterator.hasNext()) {
 				Cell cell = cellIterator.next();
 				String cellValue = d.formatCellValue(cell);
-				System.out.print(cellValue + "\t");
+//				System.out.print(cellValue + "\n");
 				switch(i%nof) {
-				case 0:
+				case indcitta:
 					addr = new Address();
-					addr.setCitta(cellValue);
+					addr.setCitta(cellValue.trim());
 					break;
-				case 1:
-					addr.setVia(cellValue);
+				case indvia:
+					addr.setVia(cellValue.trim());
 					break;
-				case 2:
-					addr.setCivico(cellValue);
-					log(addr);
+				case indcivico:
+					if(!cellValue.equals("0"))
+						addr.setCivico(cellValue.trim());
+					if(i>nof)log(addr);
 					break;
 				default:
 					break;
-				
 				}
 				i++;
 			}
-			//append empty line
-			System.out.println();
 		}
 
 		ip.close();
 	}
 
-	public static void log(Address addr) {
-		if(last==null || !addr.equals(last)) {
-			last = addr;
-			l.add(addr);
-		}else if(Integer.parseInt(addr.getCivico()) > off + Integer.parseInt(last.getCivico())){
-			l.add(addr);
-		}
+	public boolean exists() {
+		return f.exists();
+	}
+	public void log(Address addr) {
+		l.add(addr);
+	}
+	
+	public String getFileName() {
+		return fileName;
 	}
 
 	public static void main(String[] args) {
+//		try {
+//			read();
+//			System.out.println(l.get(0).getCitta());
+//			for(Address addr : l) {
+//				System.out.println(addr.toString());
+//				JSONObject json = OSM.query(addr.toString());
+//				System.out.println(json == null ? "null":json.toString());
+//			}
+//		} catch (EncryptedDocumentException | IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+		ExcelHandler eh = new ExcelHandler("segrate.xls");
 		try {
-			read();
+			eh.read();
 		} catch (EncryptedDocumentException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(eh.l.get(0).toString() + "\n" + eh.l.size());
+		
 	}
 }

@@ -11,12 +11,11 @@ class Gpx {
 	private File f;
 	public static final String datpath = System.getProperty("user.dir");
 	public final String fileName;
-	public static final String ext = ".txt"; //TODO cambiare estensione
+	public static final String ext = ".gpx"; 
 	public static final String header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
-			+ "<gpx version=\"1.1\" creator=\"Mauriello Edoardo\" xmlns=\"http://www.topografix.com/GPX/1/1\">\r\n"
-			+ "\t<trk>\r\n" + "\t\t\t<trkseg>\n";
-	public static final String footer = "\t\t</trkseg>\r\n" + "\t</trk>\r\n" + "</gpx>\n";
-	public static final String ft = "\t\t\t";
+			+ "<gpx version=\"1.1\" creator=\"Mauriello Edoardo\" "
+			+ "xmlns=\"http://www.topografix.com/GPX/1/1\">\r\n";
+	public static final String footer = "</gpx>\n";
 	
 	public Gpx(String name) {
 		fileName = name;
@@ -32,22 +31,20 @@ class Gpx {
 	}
 	
 	/**
-	 * Creates and adds a waypoint to the list using parameters
-	 * @param lon longitude
-	 * @param lat latitude
-	 * @param ele elevation
-	 */
-	public void add(float lat, float lon, float ele) {
-		l.add(new Waypoint(lat, lon, ele));
-	}
-	
-	/**
 	 * Creates and adds a waypoint to the list using parameters and 100 as elevation (standard value
 	 * @param lon
 	 * @param lat
 	 */
 	public void add(float lat, float lon) {
-		l.add(new Waypoint(lat, lon, 100f));
+		l.add(new Waypoint(lat, lon));
+	}
+	
+	protected String getFileName() {
+		return fileName + ext;
+	}
+
+	public boolean exists() {
+		return f.exists();
 	}
 	
 	/**
@@ -63,14 +60,15 @@ class Gpx {
 			FileWriter fw = new FileWriter(f, true);
 			fw.append(header);
 			for(Waypoint w : l) {
-				fw.append(String.format(ft + "<trkpt lat=\"%2.7f\" lon=\"%2.7f\">\n", w.getLat(), w.getLon()));
-				fw.append(String.format(ft + "\t" + "<ele>%3.1f</ele>\n", w.getEle()));
-				fw.append(ft + "</trkpt>\n");
+				fw.append((String.format("<wpt lat=\"%2.7f\" lon=\"%2.7f\">\n", 
+						w.getLat(), w.getLon())).replace(',', '.'));
+				fw.append("</wpt>\n");
 			}
 			fw.append(footer);
 			fw.flush();
 			fw.close();
-			System.out.println(f.length() + "\n");
+			System.out.println("Scritto file\n" + f.length() + " caratteri\n"
+			+ "In posizione " + datpath);
 		}catch(Exception e){
 			return -2;			
 		}

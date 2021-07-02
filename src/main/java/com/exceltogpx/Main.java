@@ -1,5 +1,7 @@
 package com.exceltogpx;
 
+import java.io.IOException;
+
 import org.json.JSONObject;
 
 public class Main {
@@ -9,31 +11,44 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-//		Gpx g = new Gpx("output");
-//		g.add(48.2081743f, 49.2081743f, 100.2f);
-//		g.add(49.2081743f, 49.2081743f, 101.2f);
-//		g.add(50.2081743f, 49.2081743f, 102.2f);
-//		g.add(51.2081743f, 49.2081743f, 103.2f);
-//		System.out.println(g.write());
-		
+		float a = System.currentTimeMillis();
+		float b;
 		try{
-			long a = System.currentTimeMillis();
-
-//			for(int i = 1; i<100; i++) {
-//				json = OSM.readJsonFromUrl("https://nominatim.openstreetmap.org/search?q=The+White+House,+Washington+DC&format=json&addressdetails=1");
-//				json = OSM.readJsonFromUrl("https://jsonplaceholder.typicode.com/todos/" + i);
-//				System.out.println("Processing: " + i + "% " + animationChars[i % 4] + "\r");
-//			}
-
-			ExcelHandler.read();
-			for(Address addr : ExcelHandler.l) {
-				JSONObject json = OSM.query(addr.toString());
-				System.out.println(json.toString());
+			System.out.println("Esecuzione con\nInput: " + args[0]
+					 + "\noutput: " + args[1] + Gpx.ext);
+			ExcelHandler eh = new ExcelHandler(args[0]);
+			Gpx g = new Gpx(args[1]);
+			
+			if(g.exists()) {
+				System.out.println("ERROR: delete file " + g.getFileName());
+			}else if(!eh.exists()) {
+				System.out.println("ERROR: file " + eh.getFileName() + " not found");
+			}else{
+				eh.read();
+				JSONObject last = null;
+				int err = 0;
+				for(int i = 0; i<eh.l.size(); i++) {
+					System.out.print("Processing: " + i*100/eh.l.size() + "% " + animationChars[i % 4] + "\r");
+					Address addr = eh.l.get(i);
+					JSONObject json = OSM.query(addr.toString(false));
+					if(json!=null && !json.equals(last)) {
+						g.add(new Waypoint(Float.parseFloat((String)json.get("lat")),
+							Float.parseFloat((String)json.get("lon"))));
+					}else if(json == null) {
+						json = OSM.query(addr.toString(true));
+						if(json == null) {
+							System.out.println("ERROR on query " + addr.getVia());
+							err++;
+						}
+					}
+				}
+				g.write();
+				b = System.currentTimeMillis();
+				System.out.println(err + "errori su " + eh.l.size() + " richieste\nPercentuale: " + err*100/eh.l.size() + "%\n");
+				System.out.println("Tempo di esecuzione: " + (b-a) + "ms");
 			}
-			long b = System.currentTimeMillis();
-			System.out.println(b-a);
-		}catch(Exception e) {
-
+		}catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
 

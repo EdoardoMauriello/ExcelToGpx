@@ -64,10 +64,22 @@ public class Address {
 		Address other = (Address) obj;
 		return Objects.equals(citta, other.citta) && Objects.equals(via, other.via);
 	}
-
+	
 	@Override
 	public String toString() {
-		return citta + ' ' + via + ' ' + civico;
+		if(civico == null)
+			return citta + '+' + via;
+		return citta + '+' + via + '+' + civico;
+	}
+
+	/**
+	 * @param n true for searching without civico
+	 * @return
+	 */
+	public String toString(Boolean n) {
+		if(civico == null || n)
+			return citta + '+' + via;
+		return citta + '+' + via + '+' + civico;
 	}
 
 	

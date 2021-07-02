@@ -1,0 +1,208 @@
+Esecuzione con
+Input: segrate.xls
+output: output.gpx
+Processing: 0% |
+Processing: 1% /
+Processing: 2% -
+Processing: 3% \
+Processing: 4% |
+Processing: 5% /
+Processing: 6% -
+Processing: 7% \
+Processing: 8% |
+Processing: 9% /
+Processing: 10% -
+Processing: 11% \
+Processing: 12% |
+ERROR on query VIA AEROPORTO
+Processing: 13% /
+Processing: 14% -
+Processing: 15% \
+Processing: 16% |
+Processing: 17% /
+ERROR on query VIA BARACCA FRANCESCO
+Processing: 18% -
+ERROR on query VIA BATTISTI CESARE
+Processing: 19% \
+ERROR on query VIA BUONARROTI MICHELANGELO
+Processing: 20% |
+ERROR on query VIA BUOZZI BRUNO
+Processing: 21% /
+ERROR on query VIA BUOZZI BRUNO
+Processing: 22% -
+ERROR on query VIA BUOZZI BRUNO
+Processing: 23% \
+ERROR on query VIA BUOZZI BRUNO
+Processing: 24% |
+Processing: 25% /
+Processing: 26% -
+ERROR on query VIA CARDUCCI GIOSUE'
+Processing: 27% \
+ERROR on query VIA CARDUCCI GIOSUE'
+Processing: 28% |
+Processing: 29% /
+Processing: 30% -
+Processing: 31% \
+Processing: 32% |
+Processing: 33% /
+Processing: 34% -
+Processing: 35% \
+Processing: 36% |
+Processing: 37% /
+Processing: 38% -
+Processing: 39% \
+Processing: 40% |
+Processing: 41% /
+Processing: 42% -
+Processing: 43% \
+ERROR on query VIA COSTA ANDREA
+Processing: 44% |
+Processing: 45% /
+Processing: 46% -
+Processing: 47% \
+Processing: 48% |
+Processing: 49% /
+Processing: 50% -
+Processing: 51% \
+Processing: 52% |
+Processing: 53% /
+Processing: 54% -
+Processing: 55% \
+Processing: 56% |
+Processing: 57% /
+Processing: 58% -
+Processing: 59% \
+Processing: 60% |
+Processing: 61% /
+ERROR on query VIA DI VITTORIO GIUSEPPE
+Processing: 62% -
+Processing: 63% \
+Processing: 64% |
+Processing: 65% /
+ERROR on query VIA DON STURZO
+Processing: 66% -
+ERROR on query VIA EDISON TOMMASO
+Processing: 67% \
+ERROR on query VIA EDISON TOMMASO
+Processing: 68% |
+ERROR on query VIA EDISON TOMMASO
+Processing: 69% /
+Processing: 70% -
+ERROR on query VIA FERMI ENRICO
+Processing: 71% \
+Processing: 72% |
+Processing: 73% /
+Processing: 74% -
+Processing: 75% \
+Processing: 76% |
+ERROR on query VIA GRAMSCI ANTONIO
+Processing: 77% /
+Processing: 78% -
+Processing: 79% \
+Processing: 80% |
+ERROR on query VIA IBISCO
+Processing: 81% /
+ERROR on query VIA KENNEDY JOHN FITZGERALD
+Processing: 82% -
+Processing: 83% \
+Processing: 84% |
+Processing: 85% /
+Processing: 86% -
+Processing: 87% \
+ERROR on query VIA MANZONI ALESSANDRO
+Processing: 88% |
+ERROR on query VIA MARCONI GUGLIELMO
+Processing: 89% /
+ERROR on query VIA MARCONI GUGLIELMO
+Processing: 90% -
+ERROR on query VIA MARCONI GUGLIELMO
+Processing: 91% \
+ERROR on query VIA MARCONI GUGLIELMO
+Processing: 92% |
+ERROR on query VIA MARCONI GUGLIELMO
+Processing: 93% /
+ERROR on query VIA MARTIRI DELLA LIBERTA'
+Processing: 94% -
+Processing: 95% \
+Processing: 96% |
+ERROR on query VIA MAZZINI GIUSEPPE
+Processing: 97% /
+Processing: 98% -
+Processing: 99% \
+Processing: 100% |
+Processing: 101% /
+Processing: 102% -
+Processing: 103% \
+Processing: 104% |
+Processing: 105% /
+Processing: 106% -
+Processing: 107% \
+Processing: 108% |
+Processing: 109% /
+Processing: 110% -
+Processing: 111% \
+Processing: 112% |
+Processing: 113% /
+Processing: 114% -
+Processing: 115% \
+Processing: 116% |
+Processing: 117% /
+Processing: 118% -
+Processing: 119% \
+Processing: 120% |
+Processing: 121% /
+Processing: 122% -
+ERROR on query VIA OLMO
+Processing: 123% \
+ERROR on query VIA OLMO
+Processing: 124% |
+ERROR on query VIA ORTENSIA
+Processing: 125% /
+Processing: 126% -
+Processing: 127% \
+Processing: 128% |
+Processing: 129% /
+Processing: 130% -
+ERROR on query VIA PER MIRAZZANO
+Processing: 131% \
+Processing: 132% |
+Processing: 133% /
+Processing: 134% -
+Processing: 135% \
+Processing: 136% |
+Processing: 137% /
+Processing: 138% -
+Processing: 139% \
+Processing: 140% |
+Processing: 141% /
+ERROR on query VIA ROSA
+Processing: 142% -
+ERROR on query VIA ROSA
+Processing: 143% \
+Processing: 144% |
+Processing: 145% /
+ERROR on query VIA TIEPOLO GIAN BATTISTA
+Processing: 146% -
+Processing: 147% \
+Processing: 148% |
+Processing: 149% /
+Processing: 150% -
+Processing: 151% \
+Processing: 152% |
+Processing: 153% /
+Processing: 154% -
+Processing: 155% \
+Processing: 156% |
+Processing: 157% /
+Processing: 158% -
+ERROR on query VIA TURATI FILIPPO
+Processing: 159% \
+ERROR on query VIA TURATI FILIPPO
+Processing: 160% |
+Processing: 161% /
+Processing: 162% -
+Processing: 163% \
+ERROR on query VICOLO OLGETTA
+Scritto file
+5934 caratteri
+In posizione C:\Users\edoar\Documents\GitHub\ExcelToGpx
